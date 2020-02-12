@@ -63,7 +63,7 @@ IF( INSTALL_DOC )
         # --- out-of-source installations ---
         SET( DOC_INSTALL_PREFIX doc/${PROJECT_NAME} )
     
-        INSTALL( FILES release.notes CEDPicking.pdf DESTINATION ${DOC_INSTALL_PREFIX} )
+        #INSTALL( FILES release.notes CEDPicking.pdf DESTINATION ${DOC_INSTALL_PREFIX} )
 
     ENDIF()
 
