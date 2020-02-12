@@ -25,11 +25,16 @@
 #include "EventStore.h"
 #include "JetFinder.h"
 
+
 #include <assert.h>
 #include <math.h>
 #include <fstream>
 
 //using namespace lcio;
+using EVENT::LCCollection;
+using EVENT::StringVec;
+using UTIL::PIDHandler;
+using UTIL::LCRelationNavigator;
 
 namespace lcfiplus {
 
@@ -452,7 +457,7 @@ void LCIOStorer::SetEvent(lcio::LCEvent* evt) {
 	  //cal. corrected mass
 	  track->setCorrEnergy(pmass[PID->getParticleID(pfo,pidAlgoID).getPDG()]);
 	  track->swapEnergy();  //really temporal need flag...
-	}catch(UTIL::UnknownAlgorithm e){
+	}catch(const UTIL::UnknownAlgorithm& e){
 	}
 	
 	//tempolary
