@@ -1,0 +1,39 @@
+Bottom: 37d7483e69cc936fe29618b8b749b01b1f2d50d0
+Top:    23bb980bab7109cbf88946585ece4ccd062334be
+Author: scott snyder <sss@karma>
+Date:   2020-02-12 11:29:33 -0500
+
+Refresh of compile
+
+---
+
+diff --git a/src/LCIOStorer.cc b/src/LCIOStorer.cc
+index 51ba4b7..aabe8e0 100644
+--- a/src/LCIOStorer.cc
++++ b/src/LCIOStorer.cc
+@@ -25,11 +25,16 @@
+ #include "EventStore.h"
+ #include "JetFinder.h"
+ 
++
+ #include <assert.h>
+ #include <math.h>
+ #include <fstream>
+ 
+ //using namespace lcio;
++using EVENT::LCCollection;
++using EVENT::StringVec;
++using UTIL::PIDHandler;
++using UTIL::LCRelationNavigator;
+ 
+ namespace lcfiplus {
+ 
+@@ -452,7 +457,7 @@ void LCIOStorer::SetEvent(lcio::LCEvent* evt) {
+ 	  //cal. corrected mass
+ 	  track->setCorrEnergy(pmass[PID->getParticleID(pfo,pidAlgoID).getPDG()]);
+ 	  track->swapEnergy();  //really temporal need flag...
+-	}catch(UTIL::UnknownAlgorithm e){
++	}catch(const UTIL::UnknownAlgorithm& e){
+ 	}
+ 	
+ 	//tempolary
