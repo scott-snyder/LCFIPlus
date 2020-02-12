@@ -39,7 +39,7 @@ INCLUDE_DIRECTORIES( SYSTEM ${LCFIVertex_INCLUDE_DIRS} )
 # left here for backwards compatibility
 INCLUDE_DIRECTORIES( SYSTEM ${LCFIVertex_ROOT}/vertex_lcfi ${LCFIVertex_ROOT}/boost )
 
-INCLUDE( ${ROOT_DICT_MACROS_FILE} )
+INCLUDE( MacroRootDict )
 SET( ROOT_DICT_INPUT_HEADERS
 		${PROJECT_SOURCE_DIR}/include/lcfiplus.h
 		${PROJECT_SOURCE_DIR}/include/EventStore.h
