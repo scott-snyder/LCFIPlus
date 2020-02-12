@@ -62,7 +62,7 @@ void TreeStorer::RegisterAll() {
 
   TObjArray* lbr = _tree->GetListOfBranches();
   for (int i=0; i<lbr->GetEntries(); i++) {
-    const char* name = dynamic_cast<TNamed*>(lbr->At(i))->GetName();
+    const char* name = dynamic_cast<TNamed&>(*lbr->At(i)).GetName();
     Register(name);
   }
 }
