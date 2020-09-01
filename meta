@@ -1,12 +1,11 @@
 Version: 1
-Previous: 47282e132393d502d0b04da5b909a8d19cee9a7d
-Head: 0a6389fa8594461def6a78cd0b2c2f27ab5e55fa
+Previous: 8b8ecb10a2864dbb923c36e382ff18619971aeb0
+Head: f92332f6aed279a7b771dd9ca1e17cb044c5779b
 Applied:
   cmake: 6b815c9ea32d1812a7cb14f96d4eb1d281ab9611
   compile: a5c959a49bbcdad860cd4d39ea873fd7a1529d96
   warn: 553859a72802879d2fd73b4d03e843eeb0aa25ad
   gitignore: 2e455cb3776929f77a239af2fe1dc61563d953cd
-  doxy: 54a455a785debe481e1d60ab51b47a34a7a4bca3
-  refresh-temp: 0a6389fa8594461def6a78cd0b2c2f27ab5e55fa
+  doxy: f92332f6aed279a7b771dd9ca1e17cb044c5779b
 Unapplied:
 Hidden:
