@@ -71,7 +71,7 @@ class VertexFinderTearDown {
         /*
         cout << "Track removed: chi2 = " << worstChi2 << ", vpos = ("
         			<< resultVertex->getX() << ", " << resultVertex->getY() << ", " << resultVertex->getZ() << ")" <<  endl;
-         //*/
+         // */
         delete resultVertex;
         resultVertex = 0;
       } else
