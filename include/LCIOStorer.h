@@ -103,6 +103,9 @@ class LCIOStorer : public TObject, public EventStoreObserver {
   virtual void GetCallback(const char* name, const char* classname);
 
  private:
+  bool _first = false;
+  static unsigned _ninst;
+
   lcio::LCEvent* _event;
   lcio::LCReader* _reader;
   lcio::LCWriter* _writer;

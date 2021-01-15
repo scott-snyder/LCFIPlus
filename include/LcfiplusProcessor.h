@@ -55,8 +55,12 @@ class LcfiplusProcessor : public Processor, public lcfiplus::EventStoreObserver 
 
  private:
 
+  bool _privateStorer = false;
+
   // lciostorer singleton
-  static lcfiplus::LCIOStorer* _lcio;
+  static std::unique_ptr<lcfiplus::LCIOStorer> _lcioShared;
+  std::unique_ptr<lcfiplus::LCIOStorer> _lcioPrivate;
+  lcfiplus::LCIOStorer* _lcio;
   bool _lcioowner;
 
   int _useMcp;
