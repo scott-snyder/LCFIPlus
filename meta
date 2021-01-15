@@ -1,11 +1,12 @@
 Version: 1
-Previous: 6d0c0402b0c6d8b7645c1725ea95ccd2dee5e31a
-Head: 65feac6082a886d9e2361d7d0aa2ced6f95c78f2
+Previous: 860d6d1ee2bce1e9656f6ad185dc2183b5ee8817
+Head: 077888121c89dc27922facc8734b7f5760e5577b
 Applied:
   cmake: 6b815c9ea32d1812a7cb14f96d4eb1d281ab9611
   compile: a5c959a49bbcdad860cd4d39ea873fd7a1529d96
   warn: fbd148cdb40dc92320506d9c0e561b81aa946cf4
   gitignore: 695bf9026883f3b4942c6ee5dca10e88634fa781
   doxy: 65feac6082a886d9e2361d7d0aa2ced6f95c78f2
+  singleton: 077888121c89dc27922facc8734b7f5760e5577b
 Unapplied:
 Hidden:

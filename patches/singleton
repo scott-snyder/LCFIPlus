@@ -1,0 +1,10 @@
+Bottom: d8cfbc832cf288966a7b67dd19829ac005a561ff
+Top:    d8cfbc832cf288966a7b67dd19829ac005a561ff
+Author: scott snyder <sss@karma>
+Date:   2021-01-15 15:32:55 -0500
+
+Workaround singleton problems.
+
+Using a singleton here for the event store was causing problems if we try
+to schedule multiple LCFIPlus processors the depend on each other.
+Hacked around...
