@@ -26,7 +26,7 @@ using namespace lcfiplus ;
 LcfiplusProcessor aLcfiplusProcessor ;
 
 // static object initialization
-LCIOStorer* LcfiplusProcessor::_lcio = 0;
+std::unique_ptr<LCIOStorer> LcfiplusProcessor::_lcioShared;
 
 LcfiplusProcessor::LcfiplusProcessor() : Processor("LcfiplusProcessor") {
 
@@ -38,6 +38,8 @@ LcfiplusProcessor::LcfiplusProcessor() : Processor("LcfiplusProcessor") {
 
   // MCP on/off
   registerProcessorParameter("UseMCP", "Whether MCParticle collection is imported or not", _useMcp, int(0));
+
+  registerProcessorParameter("PrivateStorer", "use a private LCIOStorer?", _privateStorer, false);
 
   // input collections
   registerInputCollection(LCIO::RECONSTRUCTEDPARTICLE, "PFOCollection" , "Particle flow output collection",
@@ -136,8 +138,15 @@ void LcfiplusProcessor::init() {
     }
 
     // initialize LCIOStorer
-    if (!_lcio) {
-      _lcio = new LCIOStorer(0,0,true,false,0); // no file
+    if (!_lcioShared || _privateStorer) {
+      if (_privateStorer) {
+        _lcioPrivate = std::make_unique<LCIOStorer>();// no file
+        _lcio = _lcioPrivate.get();
+      }
+      else {
+        _lcioShared = std::make_unique<LCIOStorer>();// no file
+        _lcio = _lcioShared.get();
+      }
       _lcio->setReadSubdetectorEnergies(_readSubdetectorEnergies);
       _lcio->setTrackHitOrdering(_trackHitOrdering);
       _lcio->setUpdateVertexRPDaughters(_updateVertexRPDaughters);
@@ -146,6 +155,7 @@ void LcfiplusProcessor::init() {
 
       _lcioowner = true;
     } else {
+      _lcio = _lcioShared.get();
       _lcioowner = false;
 
       if ((_lcio->getReadSubdetectorEnergies() != _readSubdetectorEnergies)
