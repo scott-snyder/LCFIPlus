@@ -38,8 +38,11 @@ using UTIL::LCRelationNavigator;
 
 namespace lcfiplus {
 
+unsigned LCIOStorer::_ninst = 0;
+
 // ctor/dtor
 LCIOStorer::LCIOStorer(const char* inputfile, const char* outputfile, bool autoread, bool autowrite, const char* outPrefix) {
+  if (_ninst++ == 0) _first = true;
   if (inputfile) {
     _reader = lcio::LCFactory::getInstance()->createLCReader();
 
@@ -272,7 +275,9 @@ void LCIOStorer::SetEvent(lcio::LCEvent* evt) {
 //		if(_importPFOCols.size() == 0)return;
 
   // clearing all collections
-  Event::Instance()->ClearObjects();
+  if (_first) {
+    Event::Instance()->ClearObjects();
+  }
 
   // clearing relations
   _trackLCIORel.clear();

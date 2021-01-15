@@ -173,7 +173,13 @@ float* FTManager::getVarAddress(const string& varname) {
       return algo->getValueAddress();
   }
 
-  throw (Exception("FTManager::getVarAddress(): variable name not found."));
+  std::string msg = "FTManager::getVarAddress(): variable name `" + varname + "' not found among ";
+  for (iter = _algoList.begin(); iter != _algoList.end(); ++iter) {
+    FTAlgo* algo = *iter;
+    msg += algo->getName() + " ";
+  }
+  
+  throw (Exception(msg.c_str()));
 }
 
 void FTManager::addReader(TMVA::Reader* reader, const FlavtagCategory& c) {
