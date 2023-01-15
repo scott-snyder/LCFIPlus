@@ -1,13 +1,14 @@
 {
   "version": 5,
-  "prev": "3ed3bf9908aa60fda9426b456d8014352746af73",
-  "head": "b79df9bd6a6ed879de4b8a82ebb2b7f7039d97c6",
+  "prev": "d08f56a041857ebe4342dc04370c8e6715c233d4",
+  "head": "5501b43b65a14a531d2e9b71ebf2bf81df89a212",
   "applied": [
     "gitignore",
     "cmake",
     "compile",
     "warn",
-    "doxy"
+    "doxy",
+    "singleton"
   ],
   "unapplied": [],
   "hidden": [],
@@ -26,6 +27,9 @@
     },
     "doxy": {
       "oid": "b79df9bd6a6ed879de4b8a82ebb2b7f7039d97c6"
+    },
+    "singleton": {
+      "oid": "5501b43b65a14a531d2e9b71ebf2bf81df89a212"
     }
   }
 }
