@@ -9,7 +9,7 @@
 #include "TMVA/Reader.h"
 
 namespace lcfiplus {
-struct TrackSelectorConfig;
+class TrackSelectorConfig;
 
 class PrimaryVertexFinder : public Algorithm {
  public:

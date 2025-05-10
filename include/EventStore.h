@@ -136,7 +136,7 @@ template<typename T> bool EventStore::Get(const char* name, const vector<T>*& bu
 }
 
 // non-const pointer-vector prohibited
-template<typename T> bool EventStore::Get(const char* name, const vector<T*>*& buf)const {
+template<typename T> bool EventStore::Get(const char* /*name*/, const vector<T*>*& /*buf*/)const {
   T a = "abc"; // invoke compiler error
   throw ("EventStore::Get: non-const pointer-vector prohibited");
   return false;

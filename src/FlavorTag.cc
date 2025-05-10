@@ -804,7 +804,7 @@ class FtVtxLongitudinalDeviation : public FTAlgo {
 
       //cout << "LongitudinalDeviation: vpos " << vtx->getX() << " " << vtx->getY() << " " << vtx->getZ() << endl;
 
-      double devall = 0;
+      //double devall = 0;
       double devmax = 0;
       for (unsigned int i=0; i<vtx->getTracks().size(); i++) {
         const Track* tr = vtx->getTracks()[i];
@@ -819,7 +819,7 @@ class FtVtxLongitudinalDeviation : public FTAlgo {
         Helix hel(tr);
         double dev = hel.LongitudinalDeviation(_privtx,vtx);
         //cout << "LongitudinalDeviation: track " << i << ", cpdg " << cpdg << ", bpdg " << bpdg << ", dev " << dev << endl;
-        devall += dev;
+        //devall += dev;
 
         if (devmax < dev)devmax = dev;
       }
@@ -973,7 +973,7 @@ class FtMCNB : public FTAlgo {
         						}
         						cout << endl;*/
         double emc = 0.;
-        unsigned int nmc = 0;
+        //unsigned int nmc = 0;
         // looking for MCVertex
         for (unsigned int n = 0; n< _mcvs.size(); n++) {
           if (_mcvs[n]->getDaughters().size() == 0) {
@@ -982,7 +982,7 @@ class FtMCNB : public FTAlgo {
           }
           const MCParticle* mcp = _mcvs[n]->getDaughters()[0];
           if (mcp->isParent(it->first)) {
-            nmc += _mcvs[n]->getRecoTracks().size();
+            //nmc += _mcvs[n]->getRecoTracks().size();
             for (unsigned int n2 = 0; n2 < _mcvs[n]->getRecoTracks().size(); n2++) {
               emc += _mcvs[n]->getRecoTracks()[n2]->E();
             }
@@ -1064,7 +1064,7 @@ class FtMCNC : public FTAlgo {
         						}
         						cout << endl;*/
         double emc = 0.;
-        unsigned int nmc = 0;
+        //unsigned int nmc = 0;
         // looking for MCVertex
         for (unsigned int n = 0; n< _mcvs.size(); n++) {
           if (_mcvs[n]->getDaughters().size() == 0) {
@@ -1073,7 +1073,7 @@ class FtMCNC : public FTAlgo {
           }
           const MCParticle* mcp = _mcvs[n]->getDaughters()[0];
           if (mcp->isParent(it->first)) {
-            nmc += _mcvs[n]->getRecoTracks().size();
+            //nmc += _mcvs[n]->getRecoTracks().size();
             for (unsigned int n2 = 0; n2 < _mcvs[n]->getRecoTracks().size(); n2++) {
               emc += _mcvs[n]->getRecoTracks()[n2]->E();
             }
