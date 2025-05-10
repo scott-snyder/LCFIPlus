@@ -1,7 +1,7 @@
 {
   "version": 5,
-  "prev": "dc0790640ea87b3b0af52a7b63ed5038a4c417b3",
-  "head": "bd2de3c2be674296810e953ac82dce8d1ae37f8a",
+  "prev": "90ccfafb910d5bf27f68e4ecb06b989b4104334e",
+  "head": "3fcf00df2e63016573a2b13c3140ee6286f9e638",
   "applied": [
     "gitignore",
     "cmake",
@@ -10,8 +10,7 @@
     "doxy",
     "singleton",
     "warn2",
-    "clang",
-    "refresh-temp"
+    "clang"
   ],
   "unapplied": [],
   "hidden": [],
@@ -38,10 +37,7 @@
       "oid": "66a8fae81bb43f0ed577e6dd5541f6b77b4175a5"
     },
     "clang": {
-      "oid": "808e2fe56d235f8c282dac8e439a0bf93f7dc8e3"
-    },
-    "refresh-temp": {
-      "oid": "bd2de3c2be674296810e953ac82dce8d1ae37f8a"
+      "oid": "3fcf00df2e63016573a2b13c3140ee6286f9e638"
     }
   }
 }
