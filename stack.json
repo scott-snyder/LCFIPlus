@@ -1,7 +1,7 @@
 {
   "version": 5,
-  "prev": "cc11a1616a403050039300df1038eaf6c2ca66bd",
-  "head": "20cdc245d35387bda07c43ff956fc3aa2bd46179",
+  "prev": "b251d5d4856f40995c0ef8cef34f1c7b14766e6b",
+  "head": "4f049e7cedd37c7142c94435e220b8798c482ee7",
   "applied": [
     "gitignore",
     "cmake",
@@ -11,8 +11,7 @@
     "singleton",
     "warn2",
     "clang",
-    "cmakewarn",
-    "refresh-temp"
+    "cmakewarn"
   ],
   "unapplied": [],
   "hidden": [],
@@ -24,7 +23,7 @@
       "oid": "c24f8f9435f90ecdba0a7aacbfebff0f99854580"
     },
     "cmakewarn": {
-      "oid": "ec151ad883cb2f2513374c66351d231225f19768"
+      "oid": "4f049e7cedd37c7142c94435e220b8798c482ee7"
     },
     "compile": {
       "oid": "4568ae152579579f4786338b438e97a2075d27dc"
@@ -34,9 +33,6 @@
     },
     "gitignore": {
       "oid": "21a879d80f9c73ce8d46aedabc4e63fffc9dd77d"
-    },
-    "refresh-temp": {
-      "oid": "20cdc245d35387bda07c43ff956fc3aa2bd46179"
     },
     "singleton": {
       "oid": "5501b43b65a14a531d2e9b71ebf2bf81df89a212"
