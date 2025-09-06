@@ -832,8 +832,8 @@ Jet* convertJetVertex(const Jet* jet) {
   for (VertexVecIte iter = vertices.begin(); iter != vertices.end(); ++iter) {
     const Vertex* vertex = *iter;
     TrackVec& tracks2  = vertex->getTracks();
-    for (TrackVecIte iter = tracks2.begin(); iter != tracks2.end(); ++iter) {
-      newjet->add(*iter);
+    for (const Track* track2 : tracks2) {
+      newjet->add(track2);
     }
   }
 

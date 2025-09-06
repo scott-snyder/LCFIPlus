@@ -459,21 +459,21 @@ void VertexFinderSuehara::GetVertexList(list<const Track*>& tracks, const Vertex
       vttmp.push_back(*trkit1);
       vttmp.push_back(*trkit2);
 
-      Vertex* vtx = VertexFitterSimple_V() (vttmp.begin(), vttmp.end(), 0);
+      Vertex* vtx1 = VertexFitterSimple_V() (vttmp.begin(), vttmp.end(), 0);
 
-      double chi2 = max(vtx->getChi2Track(*trkit1), vtx->getChi2Track(*trkit2));
-      TVector3 vpos = vtx->getPos();
+      double chi2 = max(vtx1->getChi2Track(*trkit1), vtx1->getChi2Track(*trkit2));
+      TVector3 vpos = vtx1->getPos();
 
-      if (chi2 < cfg.chi2thV0SelTrack && !VertexSelector().passesCut(vtx, cfg.v0selTrack,ip)) {
-        //cout << "V0 found at ( " << vtx->getPos().x() << " " << vtx->getPos().y() << " " << vtx->getPos().z() << ") : 2 tracks removed." << endl;
+      if (chi2 < cfg.chi2thV0SelTrack && !VertexSelector().passesCut(vtx1, cfg.v0selTrack,ip)) {
+        //cout << "V0 found at ( " << vtx1->getPos().x() << " " << vtx1->getPos().y() << " " << vtx1->getPos().z() << ") : 2 tracks removed." << endl;
         v0tracks.push_back(*trkit1);
         v0tracks.push_back(*trkit2);
-        v0vtx.push_back(vtx);
+        v0vtx.push_back(vtx1);
         break;
       }
 
-      if (!VertexSelector().passesCut(vtx, cfg.v0selVertex,ip)) {
-        delete vtx;
+      if (!VertexSelector().passesCut(vtx1, cfg.v0selVertex,ip)) {
+        delete vtx1;
         continue;
       }
 
@@ -481,15 +481,15 @@ void VertexFinderSuehara::GetVertexList(list<const Track*>& tracks, const Vertex
       if (vpos.Dot((v1+v2).Vect()) > 0 && chi2 < cfg.chi2th) {	// trying 3+ vertex
         if (verbose)
           cout << "Vertex accepted." << endl;
-        Vertex* vtx2 = associateTracks(vtx, constVector(v0vtx), tracks, cfg);
-        if (vtx2 != vtx) { // 3+ tracks
-          delete vtx;
+        Vertex* vtx2 = associateTracks(vtx1, constVector(v0vtx), tracks, cfg);
+        if (vtx2 != vtx1) { // 3+ tracks
+          delete vtx1;
 	  tr3list.push_back(vtx2);
 	} else { // 2 tracks
-          tr2list.push_back(vtx);
+          tr2list.push_back(vtx1);
         }
       } else { // bad vertex
-        delete vtx;
+        delete vtx1;
       }
     }
   }
@@ -505,9 +505,9 @@ void VertexFinderSuehara::GetVertexList(list<const Track*>& tracks, const Vertex
         vector<const Track*>::iterator itt = find(vttmp.begin(), vttmp.end(), tr);
         vttmp.erase(itt);
 
-        Vertex* vtx = VertexFitterSimple_V() (vttmp.begin(), vttmp.end(), 0);
-        if (vttmp.size()>2)tr3list.push_back(vtx);
-        else tr2list.push_back(vtx);
+        Vertex* vtx3 = VertexFitterSimple_V() (vttmp.begin(), vttmp.end(), 0);
+        if (vttmp.size()>2)tr3list.push_back(vtx3);
+        else tr2list.push_back(vtx3);
 
         delete *vit;
         vit = tr3list.erase(vit);
@@ -631,9 +631,9 @@ void VertexFinderSuehara::GetVertexList(list<const Track*>& tracks, const Vertex
             vector<const Track*>::iterator itt = find(vttmp.begin(), vttmp.end(), tr);
             vttmp.erase(itt);
 
-            Vertex* vtx = VertexFitterSimple_V() (vttmp.begin(), vttmp.end(), 0);
-            if (vttmp.size()>2)tr3list.push_back(vtx);
-            else tr2list.push_back(vtx);
+            Vertex* vtx3 = VertexFitterSimple_V() (vttmp.begin(), vttmp.end(), 0);
+            if (vttmp.size()>2)tr3list.push_back(vtx3);
+            else tr2list.push_back(vtx3);
 
             // vertex removed
             delete v;
