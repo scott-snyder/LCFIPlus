@@ -4,7 +4,7 @@
 #include "VertexFinderPerfect.h"
 
 namespace lcfiplus {
-void VertexFinderPerfect::findPerfectVertices(TrackVec& tracks, MCParticleVec& mcp, vector<MCVertex*>& selvtx, int minimumRecoTracks, double minimumDistance, bool print) {
+void VertexFinderPerfect::findPerfectVertices(TrackVec& tracks, MCParticleVec& mcpvec, vector<MCVertex*>& selvtx, int minimumRecoTracks, double minimumDistance, bool print) {
   for (unsigned int n=0; n<selvtx.size(); n++)
     delete selvtx[n];
 
@@ -13,12 +13,12 @@ void VertexFinderPerfect::findPerfectVertices(TrackVec& tracks, MCParticleVec& m
   vector<MCVertex*> vtx;
 
   // perfect vertex search
-  for (unsigned int n = 0; n < mcp.size(); n++) {
+  for (unsigned int n = 0; n < mcpvec.size(); n++) {
     // skip unstable & neutral particles
-    if (!mcp[n]->isStable())continue;
-    if (mcp[n]->getCharge() == 0.0) continue;
+    if (!mcpvec[n]->isStable())continue;
+    if (mcpvec[n]->getCharge() == 0.0) continue;
 
-    const TVector3& v = mcp[n]->getVertex();
+    const TVector3& v = mcpvec[n]->getVertex();
 
     unsigned int nvtx;
     for (nvtx = 0; nvtx < vtx.size(); nvtx ++) {
@@ -29,16 +29,16 @@ void VertexFinderPerfect::findPerfectVertices(TrackVec& tracks, MCParticleVec& m
       // new perfect vertex
       MCVertex* newvtx = new MCVertex;
       newvtx->setPos(v);
-      newvtx->add(mcp[n]);
+      newvtx->add(mcpvec[n]);
 
-      const MCParticle* parent = mcp[n]->getSemiStableParent();
+      const MCParticle* parent = mcpvec[n]->getSemiStableParent();
       if (parent)newvtx->setParent(parent);
 
       vtx.push_back(newvtx);
     } else {
-      vtx[nvtx]->add(mcp[n]);
+      vtx[nvtx]->add(mcpvec[n]);
 
-      const MCParticle* parent = mcp[n]->getSemiStableParent();
+      const MCParticle* parent = mcpvec[n]->getSemiStableParent();
       if (parent && (!vtx[nvtx]->getParent() || vtx[nvtx]->getParent()->isParent(parent)))
         vtx[nvtx]->setParent(parent);
     }

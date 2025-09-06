@@ -154,17 +154,19 @@ void TestAlgoV0::process() {
     _data.cs = pos.CosTheta();
     _data.phi = pos.Phi();
 
-    TVector3 mom;
-    TVector3 mom2;
-    for (unsigned int j=0; j<vtx->getTracks().size(); ++j) {
-      mom += vtx->getTracks()[j]->Vect();
-      mom2 += vtx->getTracks()[j]->momentumAtVertex(vtx);
-      _data.chrg += vtx->getTracks()[j]->getCharge();
-    }
+    {
+      TVector3 mom;
+      TVector3 mom2;
+      for (unsigned int j=0; j<vtx->getTracks().size(); ++j) {
+        mom += vtx->getTracks()[j]->Vect();
+        mom2 += vtx->getTracks()[j]->momentumAtVertex(vtx);
+        _data.chrg += vtx->getTracks()[j]->getCharge();
+      }
 
-    _data.dirdot = mom.Unit().Dot( pos.Unit() );
-    _data.dirdot2 = mom2.Unit().Dot( pos.Unit() );
-    _data.ntrk = vtx->getTracks().size();
+      _data.dirdot = mom.Unit().Dot( pos.Unit() );
+      _data.dirdot2 = mom2.Unit().Dot( pos.Unit() );
+      _data.ntrk = vtx->getTracks().size();
+    }
 
     // compute ks mass
     if (_data.ntrk == 2 && _data.chrg == 0) {
@@ -565,9 +567,9 @@ void ZHHAlgo::process() {
     if (nj == 5)continue;
     for (unsigned int nj2 = nj + 1; nj2 < 6; nj2 ++) {
       const Jet* j2 = jets[nj2];
-      TLorentzVector v = *j;
-      v += *j2;
-      _d.mass[nmass++] = v.M();
+      TLorentzVector v2 = *j;
+      v2 += *j2;
+      _d.mass[nmass++] = v2.M();
     }
 
   }

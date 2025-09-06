@@ -760,7 +760,6 @@ TVector3 Helix::ClosePoint(const Helix& hel)const {
     yc2 = y1 + r1 * sin(phi-theta);
   } else {
     nc = 1;
-    double phi = atan2(y2-y1, x2-x1);
     xc = x1 + (r1 - (r1-r2-dist)/2) * cos(phi);
     yc = y1 + (r1 - (r1-r2-dist)/2) * sin(phi);
   }
