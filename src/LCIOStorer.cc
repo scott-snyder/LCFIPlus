@@ -401,9 +401,9 @@ void LCIOStorer::SetEvent(lcio::LCEvent* evt) {
       lcfiplus::MCParticle* mcpf = NULL;
 
       // looking for MCParticle
-      for (unsigned int n=0; n<navs.size(); n++) {
-        if (navs[n]->getRelatedToObjects(pfo).size()) {
-          mcp = dynamic_cast<lcio::MCParticle*>(navs[n]->getRelatedToObjects(pfo)[0]);  // TODO [0] OK?
+      for (lcio::LCRelationNavigator* nav : navs) {
+        if (nav->getRelatedToObjects(pfo).size()) {
+          mcp = dynamic_cast<lcio::MCParticle*>(nav->getRelatedToObjects(pfo)[0]);  // TODO [0] OK?
           mcpf = _mcpLCIORel2[mcp];
           break;
         }
@@ -750,8 +750,8 @@ void LCIOStorer::ReadJets(const char* jetname, vector<const Jet*>* lcficol, cons
       // vertex attachment
       if (nav) {
         const lcio::LCObjectVec& vtxlist = nav->getRelatedToObjects(lciojet);
-        for (unsigned int n=0; n<vtxlist.size(); n++) {
-          const lcfiplus::Vertex* vtx = _vtxLCIORel2[dynamic_cast<lcio::Vertex*>(vtxlist[n])];
+        for (unsigned int ivtx=0; ivtx<vtxlist.size(); ++ivtx) {
+          const lcfiplus::Vertex* vtx = _vtxLCIORel2[dynamic_cast<lcio::Vertex*>(vtxlist[ivtx])];
           if (!vtx)throw("LCIOStorer::ReadJets: vertex object related to a jet is not found: please include vertex collection first.");
           flajet->add(vtx);
         }

@@ -132,8 +132,8 @@ void TrainMVA::init(Parameters* param) {
 
     cout << "FlavorTag category: " << c.definition << endl;
     cout << "FlavorTag preselection: " << c.preselection << endl;
-    for (unsigned int i=0; i<c.vars.size(); ++i)
-      cout << "FlavorTag variable: " << c.vars[i] << endl;
+    for (const std::string& v : c.vars)
+      cout << "FlavorTag variable: " << v << endl;
 
     _categories.push_back(c);
   }
